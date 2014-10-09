@@ -22,10 +22,19 @@
             return result;
         }
 
-        var sid = parseSecond('sid');
+        //var sid = parseSecond('sid');
+        var sid = "test";
         var d = new Date();
         if(google.loader.ClientLocation)
-        {            
+        {
+
+            var visitor_lat = google.loader.ClientLocation.latitude;
+            var visitor_lon = google.loader.ClientLocation.longitude;
+            var visitor_city = google.loader.ClientLocation.address.city;
+            var visitor_region = google.loader.ClientLocation.address.region;
+            var visitor_country = google.loader.ClientLocation.address.country;
+            var visitor_countrycode = google.loader.ClientLocation.address.country_code;
+
             document.getElementById('yourinfo').innerHTML = '<p>Lat/Lon: ' + visitor_lat + ' / ' + visitor_lon + '</p><p>Location: ' + visitor_city + ', ' + visitor_region + ', ' + visitor_country + ' (' + visitor_countrycode + ')</p>';
 
             $(function() {
@@ -33,12 +42,12 @@
                     $.getJSON($SCRIPT_ROOT + '/get_location', {
                     sid : sid,
                     date : d,
-                    visitor_lat : google.loader.ClientLocation.latitude,
-                    visitor_lon : google.loader.ClientLocation.longitude,
-                    visitor_city : google.loader.ClientLocation.address.city,
-                    visitor_region : google.loader.ClientLocation.address.region,
-                    visitor_country : google.loader.ClientLocation.address.country,
-                    visitor_countrycode : google.loader.ClientLocation.address.country_code
+                    visitor_lat : visitor_lat,
+                    visitor_lon : visitor_lon,
+                    visitor_city : visitor_city,
+                    visitor_region : visitor_region,
+                    visitor_country : visitor_country,
+                    visitor_countrycode : visitor_countrycode
                  }, function(data) {
                 $("#result").text(data.result);
                 });

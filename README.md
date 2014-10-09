@@ -10,5 +10,5 @@ python geolocator.py
 
 You will need to first initialize the database by starting a Python shell in the directory and issuing the following commands:
 ```python
->>> from geolocator import init_db"
+>>> from geolocator import init_db
 >>> init_db

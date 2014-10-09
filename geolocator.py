@@ -1,7 +1,7 @@
 import os
 import sqlite3
 from contextlib import closing
-from flask import Flask, session, redirect, url_for, escape, request, jsonify, render_template
+from flask import Flask, g, session, redirect, url_for, escape, request, jsonify, render_template
 
 #create app
 app = Flask(__name__, static_url_path="/")
@@ -55,7 +55,7 @@ def get_location():
                  [sid, date, visitor_lat, visitor_long, visitor_city, visitor_region, visitor_country, visitor_countrycode])
 	g.db.commit()
 	#on success:
-	return jsonify("Successfully stored!")
+	return jsonify(result="Successfully stored!")
 
 @app.route('/')
 def index():
