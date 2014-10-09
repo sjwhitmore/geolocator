@@ -44,8 +44,8 @@ def teardown_request(exception):
 def get_location():
 	sid = request.args.get('sid', 0, type=str)
 	date = request.args.get('date', 0, type=str)
-	visitor_lat = request.args.get('visitor_lat', 0, type=int)
-	visitor_long = request.args.get('visitor_long', 0, type=int)
+	visitor_lat = request.args.get('visitor_lat', 0, type=str)
+	visitor_long = request.args.get('visitor_long', 0, type=str)
 	visitor_city = request.args.get('visitor_city', 0, type=str)
 	visitor_region = request.args.get('visitor_region', 0, type=str)
 	visitor_country = request.args.get('visitor_country', 0, type=str)
